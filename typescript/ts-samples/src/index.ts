@@ -35,8 +35,12 @@ document.addEventListener("click", function (ev) {
 function handleClick() {
   return "hi mom";
 }
+
 document.onclick = handleClick();
 document.onclick = handleClick;
+
+// const
+const x = "baba";
 
 // -------------------- Explicit Types -------------------- //
 let num_1: number = 1;
@@ -70,6 +74,10 @@ function safeSum(a: number, b: number) {
   return a + b;
 }
 
+let z: any = 10;
+let y: any = "20";
+
+safeSum(z, y); // DO NOT USE ANY!
 safeSum(10, "20");
 let res = safeSum(10, 20);
 
@@ -112,10 +120,10 @@ let employee_1: Employee = {
 interface Data {
   id: string;
   body: string;
-  [key: string]: any;
+  [key: string]: string | boolean;
 }
 
-let data_1: Data = { id: "1", body: "dads", baba: "bubu", dada: true };
+let data_1: Data = { id: "1", body: "dads", baba: "bubu", dada: false };
 let data_2: Data = { body: "i dont have id...", baba: "bubu", lala: [] };
 
 // Type

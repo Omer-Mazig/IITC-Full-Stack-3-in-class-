@@ -1,4 +1,5 @@
 import { Cat } from "./App";
+import { useAuth } from "./providers/auth-provider";
 
 interface CatItemProps {
   cat: Cat;
@@ -8,10 +9,12 @@ interface CatItemProps {
 }
 
 export function CatItem({ cat, handleDelete }: CatItemProps) {
+  const { user, logout } = useAuth();
   return (
-    <li key={cat.id}>
+    <li>
       <span>{cat.name}</span>
       <button onClick={() => handleDelete(cat.id)}>Delete</button>
+      <span>{user?.username}</span>
     </li>
   );
 }
