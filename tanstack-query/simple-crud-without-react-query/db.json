@@ -1,0 +1,46 @@
+{
+  "cats": [
+    {
+      "id": "1",
+      "name": "Whiskers",
+      "age": 3,
+      "breed": "Tabby"
+    },
+    {
+      "id": "2",
+      "name": "Snowball",
+      "age": 2,
+      "breed": "Persian"
+    },
+    {
+      "id": "3",
+      "name": "Midnight",
+      "age": 4,
+      "breed": "Siamese"
+    },
+    {
+      "id": "4",
+      "name": "Tiger",
+      "age": 1,
+      "breed": "Bengal"
+    },
+    {
+      "id": "5",
+      "name": "Smokey",
+      "age": 5,
+      "breed": "Maine Coon"
+    },
+    {
+      "id": "6",
+      "name": "Pumpkin",
+      "age": 3,
+      "breed": "Ragdoll"
+    },
+    {
+      "id": "7",
+      "name": "Cleo",
+      "age": 2,
+      "breed": "Sphynx"
+    }
+  ]
+}
