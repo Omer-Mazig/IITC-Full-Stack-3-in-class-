@@ -30,12 +30,13 @@ const CatDetailsPage = () => {
 
   if (loading) return <Loader />;
   if (error) return <ErrorMessage message={error} />;
+  if (!cat) return <div>no cat found</div>;
 
   return (
     <div className="p-5">
-      <h1 className="text-2xl font-bold">{cat!.name}</h1>
-      <p>Age: {cat!.age}</p>
-      <p>Breed: {cat!.breed}</p>
+      <h1 className="text-2xl font-bold">{cat.name}</h1>
+      <p>Age: {cat.age}</p>
+      <p>Breed: {cat.breed}</p>
       <Link
         to="/cats"
         className="text-blue-500 underline mt-3 block"
