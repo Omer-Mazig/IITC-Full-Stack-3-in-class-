@@ -11,6 +11,7 @@ person.location = "USA";
 person.name = true;
 person = "banana";
 
+// type any
 let something;
 something = 25;
 something = "banana";
@@ -23,6 +24,7 @@ users.push({ id: "9", name: "harry" }); // this is allowed
 users.push({ id: "17" }); // this is allowed
 users.push({ id: 1 }); // this is not allowed (id should be string)
 users.push({}); // this is not allowed (id is required )
+users.push({ id: "9", name: "harry", age: 15 }); // this is not allowed
 
 document.addEventListener("resize", function (ev) {
   console.log(ev.ctrlKey);
@@ -54,12 +56,15 @@ let numsArray: number[] = [1, 2, 3];
 let numsAndBoolArray: (number | boolean)[] = [1, 2, 3, true];
 
 // real use case
-let myData: null | string[] = null;
+let myData: string[] | null = null;
 
-myData = ["mama , yorai"];
+try {
+  myData = ["mama", "yorai"];
+} catch (error) {
+  throw error;
+}
 
 // Explicit are more useful in functions
-// The reason why we use types in functions is to catch silly mistakes
 
 // passing the wrong type of arguments
 // bug in your code 👇
@@ -74,11 +79,12 @@ function safeSum(a: number, b: number) {
   return a + b;
 }
 
+safeSum(10, "20");
+
 let z: any = 10;
 let y: any = "20";
 
 safeSum(z, y); // DO NOT USE ANY!
-safeSum(10, "20");
 let res = safeSum(10, 20);
 
 // typescript know that res is of type 'number' even when we dont explicitly type it! great!
@@ -93,6 +99,7 @@ function sayHello(name: string | null) {
   if (!name) return "Hello Guest";
   return `Hello ${name.toUpperCase()}`;
 }
+
 // -------------------- Interface & Type -------------------- //
 
 interface Person {
@@ -120,15 +127,15 @@ let employee_1: Employee = {
 interface Data {
   id: string;
   body: string;
-  [key: string]: string | boolean;
+  [key: string]: boolean | string;
 }
 
-let data_1: Data = { id: "1", body: "dads", baba: "bubu", dada: false };
+let data_1: Data = { id: "1", body: "dads", 0: "bubu", dada: false };
 let data_2: Data = { body: "i dont have id...", baba: "bubu", lala: [] };
 
 // Type
 // Type is a way to define a type of a variable, but not limited to objects
-// Type is more flexible than interface but it takes longer to compile (effect only in development)
+// Type is more flexible than interface
 
 type Age = number;
 let age: Age = 25;
@@ -144,7 +151,7 @@ type Task = {
 
 let task_1: Task = { title: "Task 1" };
 let task_2: Task = { title: "Task 2", color: "red" };
-let task_3: Task = { title: "Task 3", color: "yellow" }; // ❌ this is not allowed (color should be red, green or blue)
+let task_3: Task = { title: "Task 3", color: "lijhds" }; // ❌ this is not allowed (color should be red, green or blue)
 
 type TaskWithDeadline = Task & { deadline: Date };
 
@@ -204,7 +211,7 @@ if (input) {
 
 // -------------------- Generics -------------------- //
 
-// Generics is a way to create reusable functions
+// Generics is a way to create reusable functions and/or types
 
 // without generics
 function unSafeReturnValueInArray(value: any) {
@@ -213,9 +220,11 @@ function unSafeReturnValueInArray(value: any) {
 
 let unSafeNumberArray = unSafeReturnValueInArray(10);
 let unSafeStringArray = unSafeReturnValueInArray("Hello World!");
+let unSafeBoolArray = unSafeReturnValueInArray(true);
 
 unSafeNumberArray.push(1);
 unSafeNumberArray.push("baba");
+unSafeNumberArray.push(true);
 
 unSafeStringArray.push("baba");
 unSafeStringArray.push(1);
