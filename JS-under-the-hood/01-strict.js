@@ -1,0 +1,4 @@
+"use strict";
+
+x = 100;
+console.log(x);
