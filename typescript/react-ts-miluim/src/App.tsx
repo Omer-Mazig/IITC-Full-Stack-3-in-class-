@@ -1,60 +1,39 @@
-import { useEffect, useState } from "react";
-import { HatPreview } from "./hat-preview";
-
-const INITIAL_HATS: Hat[] = [
-  {
-    id: "1",
-    category: "stupid hat",
-    desc: "aonsdlkamlksam;",
-  },
-  {
-    id: "2",
-    category: "cowboy hat",
-    desc: "aonsdlkamlksam;",
-  },
-  {
-    id: "3",
-    category: "sombrero",
-    desc: "aonsdlkamlksam;",
-  },
-];
-
-type HatCategory = "stupid hat" | "cowboy hat" | "sombrero";
-
-export type Hat = {
-  id: string;
-  category: HatCategory;
-  desc: string;
-};
+import { Link, Route, Routes, useLocation, useNavigate } from "react-router";
+import HatsPage from "./hats-page";
+import { useEffect } from "react";
+import HatDetails from "./hat-details";
 
 export default function App() {
-  const [hats, setHats] = useState<Hat[]>([]);
-  const [expendedId, setExpendedId] = useState<null | string>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    setHats(INITIAL_HATS);
-  }, []);
-
-  const handleExpanded = (id: string) => {
-    setExpendedId(id);
-  };
+    alert(location.pathname);
+  }, [location.pathname]);
 
   return (
     <>
-      <h1>Hats App</h1>
+      <nav style={{ display: "flex", gap: "8px" }}>
+        <Link to="/">Home</Link>
+        <Link to="/hats">Hats</Link>
+        <button onClick={() => navigate("/hats")}>also Hats...</button>
+        <button onClick={() => navigate(-1)}>go back</button>
+      </nav>
 
-      <ul>
-        {hats.map((hat) => {
-          return (
-            <HatPreview
-              key={hat.id}
-              hat={hat}
-              handleExpanded={handleExpanded}
-              expendedId={expendedId}
-            />
-          );
-        })}
-      </ul>
+      <Routes>
+        <Route
+          path="/"
+          element={<div>home</div>}
+        />
+        <Route
+          path="/hats"
+          element={<HatsPage />}
+        />
+        <Route
+          path="/hats/:hatId"
+          element={<HatDetails />}
+        />
+      </Routes>
     </>
   );
 }

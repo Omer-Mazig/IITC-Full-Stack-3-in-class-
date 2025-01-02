@@ -1,0 +1,19 @@
+{
+  "hats": [
+    {
+      "id": "1",
+      "category": "stupid hat",
+      "desc": "dlkalka;"
+    },
+    {
+      "id": "2",
+      "category": "cowboy hat",
+      "desc": "daslkfj;oaskzdlkscjlz;ksza;"
+    },
+    {
+      "id": "3",
+      "category": "sombrero",
+      "desc": "asdlkaslsax1234e23;"
+    }
+  ]
+}

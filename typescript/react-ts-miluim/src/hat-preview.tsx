@@ -1,4 +1,5 @@
-import { Hat } from "./App";
+import { Link } from "react-router";
+import { Hat } from "./hats-page";
 
 type HatPreviewProps = {
   hat: Hat;
@@ -12,8 +13,10 @@ export function HatPreview({
   expendedId,
 }: HatPreviewProps) {
   return (
-    <li onClick={() => handleExpanded(hat.id)}>
+    <li>
       <div>{hat.category}</div>
+      <button onClick={() => handleExpanded(hat.id)}>Expend</button>
+      <Link to={`/hats/${hat.id}`}>Go to details</Link>
       {expendedId === hat.id ? <div>{hat.desc}</div> : null}
     </li>
   );
