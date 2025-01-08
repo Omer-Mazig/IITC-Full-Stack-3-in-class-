@@ -32,7 +32,11 @@ const CatListPage = () => {
       return { previousCats };
     },
 
-    onError: () => console.log("oops"), // show toast
+    onError: (_err, _vars, context) => {
+      console.log("oops");
+      // console.log(context);
+      // queryClient.setQueryData(["cats"], () => context?.previousCats);
+    }, // show toast
     onSuccess: () => console.log("yay"), // show toast
     onSettled: () => queryClient.invalidateQueries({ queryKey: ["cats"] }),
   });

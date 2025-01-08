@@ -1,14 +1,14 @@
 import api from "@/lib/api";
 import { wait } from "@/lib/utils";
-import { Cat } from "@/types/cat.types";
+import { Cat, CatWithoutId } from "@/types/cat.types";
 
 export const getCats = async (): Promise<Cat[]> => {
   const { data } = await api.get("/cats");
   console.log("getting cats...");
 
-  // throw new Error("baba");
+  await wait(2500);
 
-  await wait();
+  // throw new Error("baba");
 
   console.log("cat are here...");
   return data;
@@ -20,7 +20,7 @@ export const getCat = async (id: string): Promise<Cat> => {
   return data;
 };
 
-export const createCat = async (cat: Cat): Promise<Cat> => {
+export const createCat = async (cat: CatWithoutId): Promise<Cat> => {
   const { data } = await api.post("/cats", cat);
   await wait();
   return data;
@@ -36,7 +36,7 @@ export const updateCat = async (
 };
 
 export const deleteCat = async (id: string): Promise<void> => {
-  // throw new Error("no!");
   await wait();
+  // throw new Error("no!");
   await api.delete(`/cats/${id}`);
 };

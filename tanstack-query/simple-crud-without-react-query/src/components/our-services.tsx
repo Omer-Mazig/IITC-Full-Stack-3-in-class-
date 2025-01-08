@@ -26,7 +26,7 @@ function OurServices() {
     let ignore = false;
 
     getData(typeOfData).then((data) => {
-      if (ignore === true) {
+      if (ignore) {
         return;
       }
       setData(data);

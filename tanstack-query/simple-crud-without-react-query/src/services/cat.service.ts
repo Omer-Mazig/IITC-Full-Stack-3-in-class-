@@ -3,6 +3,8 @@ import { wait } from "@/lib/utils";
 import { Cat } from "@/types/cat.types";
 
 export const getCats = async (): Promise<Cat[]> => {
+  console.log("getting cats");
+
   const { data } = await api.get("/cats");
   await wait();
   return data;

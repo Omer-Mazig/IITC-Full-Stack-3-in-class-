@@ -16,8 +16,10 @@ const CatListPage = () => {
       try {
         const data = await getCats();
         setCats(data);
+        setError(null);
       } catch (err) {
         setError("Failed to load cats.");
+        setCats([]);
       } finally {
         setLoading(false);
       }

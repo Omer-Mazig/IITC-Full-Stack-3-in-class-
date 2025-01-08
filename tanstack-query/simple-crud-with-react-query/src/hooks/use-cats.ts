@@ -5,8 +5,9 @@ export function useCats() {
   return useQuery({
     queryKey: ["cats"],
     queryFn: () => getCats(),
+
     // retry: 1,
     // gcTime: 5000, // default to 5 minute
-    // refetchOnWindowFocus: false, // default to 5 true
+    // refetchOnWindowFocus: false, // default to true
   });
 }

@@ -1,9 +1,9 @@
-import { Cat } from "@/types/cat.types";
+import { Cat, CatWithoutId } from "@/types/cat.types";
 import { useState } from "react";
 
 interface CatFormProps {
   initialData?: Cat;
-  onSubmit: (cat: Cat) => Promise<void>;
+  onSubmit: (cat: CatWithoutId) => Promise<void>;
   loading: boolean;
 }
 
