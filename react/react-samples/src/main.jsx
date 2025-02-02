@@ -22,8 +22,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* <EventsComponent /> */}
     {/* <ConditionalsComponent /> */}
     {/* <TheNeedForStateComponent /> */}
-    {/* <StateComponent /> */}
-    <ComponentsAndPropsComponent />
+    <StateComponent />
+    {/* <ComponentsAndPropsComponent /> */}
     {/* <UseEffectHookComponent /> */}
     {/* <DataFetchingComponent /> */}
     {/* <UseRefHookComponent /> */}

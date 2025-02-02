@@ -4,15 +4,17 @@ function StateComponent() {
   console.log("App rendering...");
 
   const [count, setCount] = useState(0);
+  const [open, setOpen] = useState(false);
 
-  function incrementCount() {
-    setCount(count + 1);
+  function handleIncrementCount() {
+    setCount((prev) => prev + 1);
   }
 
   return (
     <div>
       <p>Count: {count}</p>
-      <button onClick={incrementCount}>Increment Count</button>
+      <button onClick={handleIncrementCount}>Increment Count</button>
+      <button onClick={setOpen((prev) => !prev)}>Toggle Open</button>
     </div>
   );
 }

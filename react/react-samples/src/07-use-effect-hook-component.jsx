@@ -31,19 +31,19 @@ function UseEffectHookComponent() {
     // component will unmount (clean-up function)
     return () => {
       console.log("unmount");
-      // document.removeEventListener("click", handleClick);
+      document.removeEventListener("click", handleClick);
     };
   }, []);
 
   console.log("app render" + " " + count);
 
-  // useEffect(() => {
-  //   // component did update (state has changed)
-  //   console.log(`count ${count}`);
+  useEffect(() => {
+    // component did update (state has changed)
+    console.log(`count ${count}`);
 
-  //   // component will update (state will be change)
-  //   return () => console.log(`count from cleanup function ${count}`);
-  // }, [count]);
+    // component will update (state will be change)
+    return () => console.log(`count from cleanup function ${count}`);
+  }, [count]);
 
   return (
     <div>

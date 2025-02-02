@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 function ListsComponent() {
-  const fruits = ["banana", "melon", "apple"];
+  const [fruits, setFruits] = useState(["banana", "melon", "apple"]);
+  const [person, setPerson] = useState({ name: "naor", age: 14 });
+
+  function incremetAge() {
+    setPerson((prev) => ({ ...prev, age: prev.age + 1 }));
+  }
+
+  function addFruilt() {
+    setFruits((prev) => [...prev, "water"]);
+  }
+
+  function removeApple() {
+    setFruits((prev) => prev.filter((f) => f !== "apple"));
+  }
 
   return (
     <>
