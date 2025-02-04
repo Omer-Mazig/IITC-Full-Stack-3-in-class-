@@ -16,3 +16,8 @@ function factorial(n) {
   // TODO: For n > 0, return n * factorial(n - 1).
   // TODO: Optionally handle negative numbers with a proper response.
 }
+
+// Test Cases for factorial
+console.log("Factorial of 0:", factorial(0)); // Expected output: 1
+console.log("Factorial of 1:", factorial(1)); // Expected output: 1
+console.log("Factorial of 5:", factorial(5)); // Expected output: 120

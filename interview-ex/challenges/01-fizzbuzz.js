@@ -18,3 +18,7 @@ function fizzBuzz(n) {
   // TODO: For each iteration, check the conditions in the suggested order.
   // TODO: Console.log the appropriate string or the number.
 }
+
+// Test Cases for FizzBuzz
+console.log("Testing fizzBuzz with n = 15:");
+fizzBuzz(15);

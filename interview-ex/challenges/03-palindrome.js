@@ -15,3 +15,12 @@ function isPalindrome(input) {
   // TODO: Reverse the string and compare with the normalized original.
   // TODO: Return true if they match, or false otherwise.
 }
+
+// Test Cases for isPalindrome
+console.log('Is "racecar" a palindrome?:', isPalindrome("racecar")); // Expected output: true
+console.log('Is "hello" a palindrome?:', isPalindrome("hello")); // Expected output: false
+console.log(
+  'Is "A man, a plan, a canal, Panama" a palindrome?:',
+  isPalindrome("A man, a plan, a canal, Panama")
+); // Expected output: true
+console.log("Is [1,2,3,2,1] a palindrome?:", isPalindrome([1, 2, 3, 2, 1])); // Expected output: true (if conversion is handled correctly)

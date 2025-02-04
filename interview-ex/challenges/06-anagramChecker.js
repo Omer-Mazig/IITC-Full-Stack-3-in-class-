@@ -16,3 +16,13 @@ function areAnagrams(str1, str2) {
   // TODO: Split the strings into arrays, sort them, and join them back.
   // TODO: Compare the sorted strings and return the result.
 }
+
+// Test Cases for areAnagrams
+console.log(
+  'Are "listen" and "silent" anagrams?:',
+  areAnagrams("listen", "silent")
+); // Expected output: true
+console.log(
+  'Are "hello" and "world" anagrams?:',
+  areAnagrams("hello", "world")
+); // Expected output: false

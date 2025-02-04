@@ -15,3 +15,9 @@ function createCounter() {
   // TODO: Initialize your counter variable (e.g., let count = 0).
   // TODO: Return a function that increments and returns count.
 }
+
+// Test Cases for createCounter
+const counter = createCounter();
+console.log("Counter call 1:", counter()); // Expected output: 1
+console.log("Counter call 2:", counter()); // Expected output: 2
+console.log("Counter call 3:", counter()); // Expected output: 3

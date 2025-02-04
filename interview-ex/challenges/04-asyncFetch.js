@@ -14,3 +14,13 @@ function fetchData() {
   // TODO: Return a new Promise that resolves after a certain delay (e.g., 2000 milliseconds).
   // TODO: Inside setTimeout, call resolve() with sample data.
 }
+
+// Test Cases for fetchData
+console.log("Fetching data...");
+fetchData()
+  .then((data) => {
+    console.log("Data received:", data);
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });

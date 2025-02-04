@@ -15,3 +15,7 @@ function flattenArray(arr) {
   // TODO: If the element is an array, recursively flatten it; otherwise, push it into the result.
   // TODO: Return the flattened array.
 }
+
+// Test Cases for flattenArray
+const nestedArray = [1, [2, [3, 4], 5], 6];
+console.log("Flattened array:", flattenArray(nestedArray)); // Expected output: [1, 2, 3, 4, 5, 6]

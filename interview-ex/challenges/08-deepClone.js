@@ -16,3 +16,20 @@ function deepClone(obj) {
   // TODO: Recursively copy each property or element.
   // TODO: Return the new deep-cloned object.
 }
+
+// Test Cases for deepClone
+const original = {
+  a: 1,
+  b: { c: 2 },
+  d: [3, 4],
+};
+
+const cloned = deepClone(original);
+console.log("Original object:", original);
+console.log("Cloned object:", cloned);
+
+// Modify the cloned object to ensure a deep copy was made
+cloned.b.c = 99;
+console.log("After modifying cloned object:");
+console.log("Original object:", original);
+console.log("Cloned object:", cloned);

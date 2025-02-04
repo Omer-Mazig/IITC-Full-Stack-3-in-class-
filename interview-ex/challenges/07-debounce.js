@@ -18,3 +18,19 @@ function debounce(fn, delay) {
   //   - Sets a new timer with setTimeout to call fn after "delay" milliseconds.
   //   - Uses "fn.apply(this, args)" to maintain this-context and pass arguments.
 }
+
+// Test Cases for Debounce
+function testDebounce() {
+  console.log("Debounced function executed");
+}
+
+const debouncedTest = debounce(testDebounce, 500);
+console.log("Calling debounced function rapidly");
+debouncedTest();
+debouncedTest();
+debouncedTest();
+
+setTimeout(() => {
+  console.log("Calling debounced function after delay");
+  debouncedTest();
+}, 1000);
