@@ -56,3 +56,28 @@ const doubles = numbers.map((number, index, array) => {
 console.log(doubles);
 
 console.log(myDoubles);
+
+function wrapItemInArray<T>(item: T) {
+  return [item];
+}
+
+const stringArray = wrapItemInArray("1");
+stringArray[0].toUpperCase();
+// stringArray[0].toFixed();
+
+const numbersArray = wrapItemInArray(1);
+numbersArray[0].toFixed();
+// numbersArray[0].toUpperCase();
+
+const person = {
+  name: "omer",
+  age: 14,
+  hobbies: ["swim"],
+};
+
+const value = getValueByKey(person, "age");
+console.log(value);
+
+function getValueByKey<TObj, TKey extends keyof TObj>(obj: TObj, key: TKey) {
+  return obj[key];
+}
