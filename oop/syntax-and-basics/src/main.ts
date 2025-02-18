@@ -22,4 +22,37 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 // Vehicle;
 // LocalStorageSaver;
 // Animal;
-Bird;
+// Bird;
+
+declare global {
+  interface Array<T> {
+    myMap<U>(callback: (item: T, index: number, array: T[]) => U): U[];
+  }
+}
+
+Array.prototype.myMap = function <T, U>(
+  this: T[],
+  callback: (item: T, index: number, array: T[]) => U
+): U[] {
+  const result: U[] = [];
+
+  for (let i = 0; i < this.length; i++) {
+    result.push(callback(this[i], i, this));
+  }
+
+  return result;
+};
+
+const numbers = [1, 2, 3];
+
+const myDoubles = numbers.myMap((number, index, array) => {
+  return number * 2;
+});
+
+const doubles = numbers.map((number, index, array) => {
+  return number * 2;
+});
+
+console.log(doubles);
+
+console.log(myDoubles);
