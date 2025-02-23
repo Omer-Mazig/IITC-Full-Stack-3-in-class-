@@ -1,0 +1,12 @@
+{
+  "name": "interview-ex",
+  "version": "1.0.0",
+  "description": "This project contains a variety of JavaScript coding challenges and interview questions that are commonly asked. Instead of providing complete solutions, each challenge file contains tips and guidelines (written as comments) to help you work through the problem. You can remove or keep these tips as you like.",
+  "main": "playground.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
