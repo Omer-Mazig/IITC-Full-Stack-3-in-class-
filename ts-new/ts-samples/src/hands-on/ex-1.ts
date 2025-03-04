@@ -53,7 +53,7 @@ displayPerson('Alice') // should not be allowed!
 // we want to make a function that takes a number and a callback and returns the result of the callback
 // the result of the callback is a number
 // bonus: the result of the callback can any value (but don't use any! use a generic type)
-function processNumber(number) {
+function processNumber<T>(number: number , callback: (n: number) => T): T {
   return callback(number);
 }
 
@@ -118,7 +118,7 @@ getFullName({ firstName: "Alice", lastName: "Smith", age: 25 }) // should not be
 // 11. 
 // we want to make a function that takes an array of a certain type and returns the first item
 // the item should be a member (type) of the array
-function getFirstItem(arr) {
+function getFirstItem<T>(arr: T[]) {
   return arr[0];
 }
 
@@ -134,18 +134,24 @@ firstString.toFixed() // should not be allowed!
 //12. 
 function render() {
   const button = document.getElementById('btn')
+  if (!button) return
   document.body.appendChild(button)
 }
 
 // 13.
-function printStuff(obj) {
+function printStuff(obj: {x: string , y: number}) {
   console.log(obj.x)
   console.log(obj.y)
 }
 
-printStuff({ x: "baba", y: 17 }) // should be allowed
-printStuff({ x: "baba", y: 17, z: "mami" }) // should be allowed
-printStuff({ x: "baba" }) // should not be allowed!
+const a = { x: "baba", y: 17 }
+const b = { x: "baba", y: 17, z: "mami" }
+const c = { x: "baba" }
+
+
+printStuff(a) // should be allowed
+printStuff(b) // should be allowed
+printStuff(c) // should not be allowed!
 
 // 14.
 // we want to make a function that takes an unknown value and logs something
@@ -164,3 +170,25 @@ doSomethingWithUnknown (/* any value should be allowed */)
 // 15.
 
 }
+
+type Obj = {
+  a: string
+  b: string
+}
+
+function returnObj1(): Obj {
+  return {
+    a: 'a',
+    b: 'b',
+    c: 'c'
+  }
+}
+function returnObj2(): Obj {
+  const obj = {
+    a: 'a',
+    b: 'b',
+    password: 'c'
+  }
+  return obj
+}
+
