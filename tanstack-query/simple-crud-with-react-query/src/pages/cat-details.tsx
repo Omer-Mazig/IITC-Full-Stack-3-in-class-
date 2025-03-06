@@ -1,21 +1,12 @@
 import { useParams, Link } from "react-router-dom";
 import Loader from "@/components/loader";
 import ErrorMessage from "@/components/error-message";
-import { useQuery } from "@tanstack/react-query";
-import { getCat } from "@/services/cat.service";
+import { useGetCat } from "@/hooks/use-cats";
 
 const CatDetailsPage = () => {
   const { id } = useParams();
 
-  const {
-    data: cat,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["cat", { id }],
-    queryFn: () => getCat(id!),
-    enabled: !!id,
-  });
+  const { data: cat, isLoading, error } = useGetCat(id);
 
   if (isLoading) return <Loader />;
   if (error) return <ErrorMessage message={error.message} />;

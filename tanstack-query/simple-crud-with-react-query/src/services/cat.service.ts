@@ -2,13 +2,20 @@ import api from "@/lib/api";
 import { wait } from "@/lib/utils";
 import { Cat, CatWithoutId } from "@/types/cat.types";
 
+let fetchCount = 0;
+const MAX_FETCH_COUNT = 0;
+
 export const getCats = async (): Promise<Cat[]> => {
   const { data } = await api.get("/cats");
   console.log("getting cats...");
 
   await wait(2500);
 
-  // throw new Error("baba");
+  fetchCount++;
+
+  if (fetchCount < MAX_FETCH_COUNT) {
+    throw new Error("baba");
+  }
 
   console.log("cat are here...");
   return data;
@@ -37,6 +44,9 @@ export const updateCat = async (
 
 export const deleteCat = async (id: string): Promise<void> => {
   await wait();
-  // throw new Error("no!");
+  // if (id === "6") {
+  //   throw new Error("Cannot delete cat with id 6");
+  // }
+
   await api.delete(`/cats/${id}`);
 };

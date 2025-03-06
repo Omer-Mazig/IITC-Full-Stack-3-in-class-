@@ -2,47 +2,15 @@ import ErrorMessage from "@/components/error-message";
 import Loader from "@/components/loader";
 import { Link } from "react-router-dom";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteCat } from "@/services/cat.service";
-import { useCats } from "@/hooks/use-cats";
-import { Cat } from "@/types/cat.types";
+import { useGetCats, useDeleteCat } from "@/hooks/use-cats";
 
 const CatListPage = () => {
-  const queryClient = useQueryClient();
+  const { data: cats, error, isLoading, isFetching } = useGetCats();
 
-  const { data: cats, error, isLoading, isFetching } = useCats();
-
-  const deleteCatMutation = useMutation({
-    mutationFn: deleteCat,
-
-    onMutate: async (id: string) => {
-      // Cancel any outgoing refetches
-      // (so they don't overwrite our optimistic update)
-      await queryClient.cancelQueries({ queryKey: ["cats"] });
-
-      // Snapshot the previous value
-      const previousCats = queryClient.getQueryData(["cats"]);
-
-      // Optimistically update to the new value
-      queryClient.setQueryData(["cats"], (cats: Cat[]) => {
-        return cats.filter((cat) => cat.id !== id);
-      });
-
-      // Return a context object with the snapshotted value
-      return { previousCats };
-    },
-
-    onError: (_err, _vars, context) => {
-      console.log("oops");
-      // console.log(context);
-      // queryClient.setQueryData(["cats"], () => context?.previousCats);
-    }, // show toast
-    onSuccess: () => console.log("yay"), // show toast
-    onSettled: () => queryClient.invalidateQueries({ queryKey: ["cats"] }),
-  });
+  const deleteCatMutation = useDeleteCat();
 
   async function handleDelete(id: string) {
-    await deleteCatMutation.mutateAsync(id);
+    deleteCatMutation.mutate(id);
   }
 
   if (isLoading) return <Loader />;
@@ -52,7 +20,6 @@ const CatListPage = () => {
   return (
     <div className="p-5">
       <h1 className="text-2xl font-bold mb-4">Cat List</h1>
-      {isFetching && <p>getting fresh data...</p>}
       <ul>
         {cats.map((cat) => (
           <li
@@ -74,6 +41,7 @@ const CatListPage = () => {
           </li>
         ))}
       </ul>
+      {isFetching && <p>getting fresh data...</p>}
     </div>
   );
 };

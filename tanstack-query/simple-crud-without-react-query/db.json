@@ -29,18 +29,6 @@
       "name": "Smokey",
       "age": 5,
       "breed": "Maine Coon"
-    },
-    {
-      "id": "6",
-      "name": "Pumpkin",
-      "age": 3,
-      "breed": "Ragdoll"
-    },
-    {
-      "id": "7",
-      "name": "Cleo",
-      "age": 2,
-      "breed": "Sphynx"
     }
   ]
 }

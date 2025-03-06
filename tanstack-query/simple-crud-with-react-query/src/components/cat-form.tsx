@@ -3,7 +3,7 @@ import { useState } from "react";
 
 interface CatFormProps {
   initialData?: Cat;
-  onSubmit: (cat: CatWithoutId) => Promise<void>;
+  onSubmit: (cat: CatWithoutId) => void;
   loading: boolean;
 }
 
@@ -14,7 +14,7 @@ const CatForm = ({ initialData, onSubmit, loading }: CatFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await onSubmit({ name, age, breed });
+    onSubmit({ name, age, breed });
   };
 
   return (

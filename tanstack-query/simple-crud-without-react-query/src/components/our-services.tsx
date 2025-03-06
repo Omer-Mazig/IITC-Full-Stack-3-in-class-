@@ -6,13 +6,12 @@ import { useEffect, useState } from "react";
 type TypeOfData = "food" | "games";
 
 async function getData(type: TypeOfData | undefined) {
-  if (!type) return;
+  if (!type) return undefined;
   if (type === "food") {
     return "good and yami bonzo!";
   }
 
   if (type === "games") {
-    await wait();
     await wait();
     return "very fun game!";
   }
@@ -20,21 +19,15 @@ async function getData(type: TypeOfData | undefined) {
 
 function OurServices() {
   const [typeOfData, setTypeOfData] = useState<TypeOfData | undefined>();
-  const [data, setData] = useState<string | undefined>();
+  const [data, setData] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    let ignore = false;
-
-    getData(typeOfData).then((data) => {
-      if (ignore) {
-        return;
-      }
+    const fetchData = async () => {
+      const data = await getData(typeOfData);
       setData(data);
-    });
-
-    return () => {
-      ignore = true;
     };
+
+    fetchData();
   }, [typeOfData]);
 
   return (

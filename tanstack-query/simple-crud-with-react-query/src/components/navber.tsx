@@ -1,8 +1,8 @@
-import { useCats } from "@/hooks/use-cats";
+import { useGetCats } from "@/hooks/use-cats";
 import { Link } from "react-router";
 
 function Navbar() {
-  const { data: cats, isLoading } = useCats();
+  const { data: cats, isLoading } = useGetCats();
   return (
     <div>
       <nav className="flex gap-4">
